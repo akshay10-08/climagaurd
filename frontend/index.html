@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ClimaGuard - Decentralized Climate Insurance</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌱 ClimaGuard</h1>
+    <p>Parametric Insurance for Climate Risks</p>
+    <button onclick="connectWallet()">Connect Wallet</button>
+    <button onclick="buyPolicy()">Buy Insurance</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script>
+    let contract;
+    const contractAddress = "PASTE_DEPLOYED_CONTRACT_ADDRESS_HERE";
+    const abi = PASTE_ABI_JSON_HERE;
+
+    async function connectWallet() {
+      if (window.ethereum) {
+        await ethereum.request({ method: "eth_requestAccounts" });
+        window.web3 = new Web3(ethereum);
+        contract = new web3.eth.Contract(abi, contractAddress);
+        alert("Wallet connected!");
+      }
+    }
+
+    async function buyPolicy() {
+      const accounts = await web3.eth.getAccounts();
+      await contract.methods.purchasePolicy().send({ from: accounts[0], value: web3.utils.toWei("0.05", "ether") });
+      alert("Insurance Policy Purchased!");
+    }
+  </script>
+</body>
+</html>
