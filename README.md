@@ -49,3 +49,5 @@ Deploy on Remix or Hardhat
 Akshay Gupta | 2025 Chainlink Spring Hackathon  
 Project Repo: [GitHub Link Here]
 
+## 🔗 Live GitHub Repository
+[Click here to view the full project on GitHub](https://github.com/akshay10-08/climagaurd.git)
